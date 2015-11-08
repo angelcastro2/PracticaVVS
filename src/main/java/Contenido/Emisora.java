@@ -13,6 +13,8 @@ public class Emisora implements Contenido {
 	public Emisora(String titulo, int duracion){
 		this.titulo=titulo;
 		this.duracion=duracion;
+		listaReproduccion = new ArrayList<Contenido>();
+		listaReproduccion.add(this);
 	}
 	
 	//Obtiene el titulo

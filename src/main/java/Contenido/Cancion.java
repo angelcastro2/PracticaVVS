@@ -12,6 +12,8 @@ public class Cancion implements Contenido {
 	public Cancion(String titulo, int duracion){
 		this.titulo = titulo;
 		this.duracion = duracion;
+		listaReproduccion = new ArrayList<Contenido>();
+		listaReproduccion.add(this);
 	}
 
 	//Obtiene el titulo
