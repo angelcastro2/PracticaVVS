@@ -1,5 +1,6 @@
 package Contenido;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cancion implements Contenido {
@@ -28,14 +29,14 @@ public class Cancion implements Contenido {
 		return listaReproduccion;
 	}
 
-	/* AQUI TENGO DUDAS
-	 * */
+	//Buscar
 	public List<Contenido> buscar(String subcadena) {
-		
-		/*
-		 * AQUI TENGO DUDAS, falta acabar esto
-		 */
-		return null;
+		if (titulo.equalsIgnoreCase(subcadena)){
+			return listaReproduccion;
+		}else{
+			List<Contenido> listaVacia = new ArrayList<Contenido>();
+			return listaVacia;
+		}
 	}
 	
 	//Canción no implementa esta funcionalidad
