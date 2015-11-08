@@ -30,21 +30,22 @@ public class Anuncio implements Contenido {
 	}
 
 	//Busca
-	public List<Contenido> buscar(String elemento) {
-		return null;
+	public List<Contenido> buscar(String subcadena) {
+		if (titulo.equalsIgnoreCase(subcadena)){
+			return listaReproduccion;
+		}else{
+			List<Contenido> listaVacia = new ArrayList<Contenido>();
+			return listaVacia;
+		}
 	}
 
 
-
+	//Anuncio no implementa esta funcionalidad
 	public void agregar(Contenido contenido, Contenido predecesor) {
-		// TODO Auto-generated method stub
-		
 	}
 
-
+	//Anuncio no implementa esta funcionalidad
 	public void eliminar(Contenido contenido) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	
