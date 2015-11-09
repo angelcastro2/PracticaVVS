@@ -75,7 +75,7 @@ public class ContenidoTest {
 		public void obtenerDuracionTest() {
 			assertEquals(cancion1.obtenerDuracion(), 100);
 			assertEquals(anuncio1.obtenerDuracion(), 5);
-			assertEquals(emisora.obtenerDuracion(), 0);
+			assertEquals(emisora.obtenerDuracion(), 220);
 		}
 		
 		
