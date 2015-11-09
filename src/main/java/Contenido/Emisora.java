@@ -10,9 +10,9 @@ public class Emisora implements Contenido {
 	private List<Contenido> listaReproduccion;
 	
 	//Constructor 
-	public Emisora(String titulo, int duracion){
+	public Emisora(String titulo){
 		this.titulo=titulo;
-		this.duracion=duracion;
+		this.duracion=0;
 		listaReproduccion = new ArrayList<Contenido>();
 	}
 	
@@ -47,6 +47,7 @@ public class Emisora implements Contenido {
 	 * */
 	public void agregar(Contenido contenido, Contenido predecesor) {
 		listaReproduccion.add((listaReproduccion.indexOf(predecesor) + 1) , contenido);
+		duracion+=contenido.obtenerDuracion();
 		
 	}
 	/*Elimina el contenido pasado de la emisora 
