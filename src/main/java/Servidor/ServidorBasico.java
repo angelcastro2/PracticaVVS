@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Contenido.Contenido;
-import Contenido.Emisora;
 
 //Servidor sin respaldo. 
 public class ServidorBasico extends ServidorGenerico {
@@ -19,27 +18,19 @@ public class ServidorBasico extends ServidorGenerico {
 	// cada 3 contenidos
 	public List<Contenido> buscar(String subcadena, String token) {
 
-		List<Contenido> contenidos = super.getContenidos(); // Contenidos del servidor
+		List<Contenido> contenidos = new ArrayList<Contenido>(); // Contenidos del servidor
 		List<Contenido> resultado = new ArrayList<Contenido>(); // Contenidos + Anuncios a devolver
-		List<Contenido> aux = new ArrayList<Contenido>(); // Contenidos del servidor coincidentes con la subcadena
-		List<Contenido> busqueda = new ArrayList<Contenido>();
 		
+		for (Contenido c: super.getContenidos())
+			contenidos.addAll(c.buscar(subcadena));
 		
-		// Hacemos el filtro de elementos coincidentes con la subcadena
-		for (Contenido c : contenidos)
-			if ((busqueda = c.buscar(subcadena)) != null){
-				if (c.getClass()!=Emisora.class){
-					aux.addAll(busqueda);
-				}
-			}
-
 		try {
 			// Comprobamos el token
 			Token.validarToken(token);
 
 			// Recorremos los contenidos filtrados y los añadimos a resultado
 			// usamos el token para consumir ese contenido
-			for (Contenido c : aux) {
+			for (Contenido c : contenidos) {
 				resultado.add(c);
 				Token.usarToken(token);
 			}
@@ -49,8 +40,8 @@ public class ServidorBasico extends ServidorGenerico {
 			resultado.add(super.obtenerAnuncio());
 			// Empezamos en resultado.size para no recorrer los contenidos
 			// obtenidos con el token
-			for (int i = resultado.size() - 1; i < aux.size(); i++) {
-				resultado.add(aux.get(i));
+			for (int i = resultado.size() - 1; i < contenidos.size(); i++) {
+				resultado.add(contenidos.get(i));
 				// Si es multiplo de 3 metemos un anuncio. 0%3 es 0 por lo que
 				// tenemos que controlar que no meta anuncio entre el contenido
 				// 0 y el 1
@@ -61,5 +52,4 @@ public class ServidorBasico extends ServidorGenerico {
 
 		return resultado;
 	}
-
 }

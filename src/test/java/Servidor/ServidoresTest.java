@@ -68,9 +68,9 @@ public class ServidoresTest {
 		c7 = new Cancion("c7", 2);
 		c8 = new Cancion("c8", 2);
 		c9 = new Cancion("c9", 2);
-		c10 = new Emisora("c10", 2);
+		c10 = new Emisora("c10");
 		c11 = new Cancion("c11", 2);
-		c12 = new Cancion("c12", 2);
+		c12 = new Emisora("c12");
 		c13 = new Cancion("c13", 2);
 		c14 = new Cancion("c14", 2);
 		c15 = new Cancion("c15", 2);
@@ -200,12 +200,12 @@ public class ServidoresTest {
 		esperado.add(c7);
 		esperado.add(c8);
 		esperado.add(c9);
-		esperado.add(a1);
 		esperado.add(c11);
+		esperado.add(a1);
 		esperado.add(c12);
 		esperado.add(c13);
-		esperado.add(a2);
 		esperado.add(c14);
+		esperado.add(a2);
 		esperado.add(c15);
 
 		// Comprobamos que tienen el mismo tamaño
