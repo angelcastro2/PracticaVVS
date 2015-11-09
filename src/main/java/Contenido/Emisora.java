@@ -34,9 +34,9 @@ public class Emisora implements Contenido {
 	 */
 	public List<Contenido> buscar(String subcadena) {
 		List<Contenido> resultado = new ArrayList<Contenido>();
-		for(int i=0; i < listaReproduccion.size();i++){
-			if (listaReproduccion.get(i).obtenerTitulo().contains(subcadena)){
-				resultado.add(listaReproduccion.get(i));
+		for(Contenido c: listaReproduccion){
+			if (c.obtenerTitulo().contains(subcadena)){
+				resultado.add(c);
 			}
 		}
 		return resultado;

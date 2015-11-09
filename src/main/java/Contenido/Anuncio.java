@@ -31,11 +31,9 @@ public class Anuncio implements Contenido {
 	//Busca
 	public List<Contenido> buscar(String subcadena) {
 		if (titulo.contains(subcadena)){
-			return listaReproduccion;
-		}else{
-			List<Contenido> listaVacia = new ArrayList<Contenido>();
-			return listaVacia;
+			listaReproduccion.add(this);
 		}
+		return listaReproduccion;
 	}
 
 
