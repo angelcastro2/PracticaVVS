@@ -11,7 +11,6 @@ public class Anuncio implements Contenido {
 	
 	public Anuncio() {
 		listaReproduccion = new ArrayList<Contenido>();
-		listaReproduccion.add(this);
 	}
 
 	//Obtiene el titulo
