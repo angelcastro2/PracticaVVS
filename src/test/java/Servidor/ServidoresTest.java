@@ -12,6 +12,7 @@ import org.junit.Test;
 import Contenido.Anuncio;
 import Contenido.Cancion;
 import Contenido.Contenido;
+import Contenido.Emisora;
 
 //Tests de las funcionalidades de los servidores de contenidos
 public class ServidoresTest {
@@ -67,7 +68,7 @@ public class ServidoresTest {
 		c7 = new Cancion("c7", 2);
 		c8 = new Cancion("c8", 2);
 		c9 = new Cancion("c9", 2);
-		c10 = new Cancion("c10", 2);
+		c10 = new Emisora("c10", 2);
 		c11 = new Cancion("c11", 2);
 		c12 = new Cancion("c12", 2);
 		c13 = new Cancion("c13", 2);
@@ -235,7 +236,6 @@ public class ServidoresTest {
 		esperado.add(c7);
 		esperado.add(c8);
 		esperado.add(c9);
-		esperado.add(c10);
 		esperado.add(a1);
 		esperado.add(c11);
 		esperado.add(c12);

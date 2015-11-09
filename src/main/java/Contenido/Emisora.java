@@ -21,17 +21,17 @@ public class Emisora implements Contenido {
 	public String obtenerTitulo() {
 		return titulo;
 	}
-	//Obtiene la duración
+	//Obtiene la duraciï¿½n
 	public int obtenerDuracion() {
 		return duracion;
 	}
-	//Obtiene la lista de reproducción
+	//Obtiene la lista de reproducciï¿½n
 	public List<Contenido> obtenerListaReproduccion() {
 		return listaReproduccion;
 	}
-	/*Busca la subcadena pasada pro parámetro en el titulo de los elementos
-	 * de la lista de  reproducción, si no encuentra ada entonces devuelve
-	 * lista vacía
+	/*Busca la subcadena pasada pro parï¿½metro en el titulo de los elementos
+	 * de la lista de  reproducciï¿½n, si no encuentra ada entonces devuelve
+	 * lista vacï¿½a
 	 */
 	public List<Contenido> buscar(String subcadena) {
 		List<Contenido> resultado = new ArrayList<Contenido>();
@@ -43,11 +43,11 @@ public class Emisora implements Contenido {
 		return resultado;
 	}
 
-	/*Busca el predecesor e inserta el contenido después del predecesor en 
-	 * la lista de reproducción
+	/*Busca el predecesor e inserta el contenido despuï¿½s del predecesor en 
+	 * la lista de reproducciï¿½n
 	 * */
 	public void agregar(Contenido contenido, Contenido predecesor) {
-		listaReproduccion.add(listaReproduccion.indexOf(predecesor) + 1 , contenido);
+		listaReproduccion.add((listaReproduccion.indexOf(predecesor) + 1) , contenido);
 		
 	}
 	/*Elimina el contenido pasado de la emisora 

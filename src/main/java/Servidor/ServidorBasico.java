@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Contenido.Contenido;
+import Contenido.Emisora;
 
 //Servidor sin respaldo. 
 public class ServidorBasico extends ServidorGenerico {
@@ -26,8 +27,11 @@ public class ServidorBasico extends ServidorGenerico {
 		
 		// Hacemos el filtro de elementos coincidentes con la subcadena
 		for (Contenido c : contenidos)
-			if ((busqueda = c.buscar(subcadena)) != null)
-				aux.addAll(busqueda);
+			if ((busqueda = c.buscar(subcadena)) != null){
+				if (c.getClass()!=Emisora.class){
+					aux.addAll(busqueda);
+				}
+			}
 
 		try {
 			// Comprobamos el token

@@ -19,7 +19,7 @@ public class Anuncio implements Contenido {
 		return titulo;
 	}
 	
-	//Obtiene la duración
+	//Obtiene la duraciï¿½n
 	public int obtenerDuracion() {
 		return duracion;
 	}
@@ -31,7 +31,7 @@ public class Anuncio implements Contenido {
 
 	//Busca
 	public List<Contenido> buscar(String subcadena) {
-		if (titulo.equalsIgnoreCase(subcadena)){
+		if (titulo.contains(subcadena)){
 			return listaReproduccion;
 		}else{
 			List<Contenido> listaVacia = new ArrayList<Contenido>();
