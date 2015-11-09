@@ -1,12 +1,15 @@
 package Contenido;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import Servidor.Token;
 
 public class ContenidoTest {
 
@@ -101,10 +104,43 @@ public class ContenidoTest {
 		
 		/*----------------------------------------------------------------------------*/
 
-		
-		
-		/*----------------------------------------------------------------------------*/
+		// Prueba la busqueda 
+		@Test
+		public void buscarBasicoTest() {
+			// Obtenemos la lista de contenidos de la funcion a probar
+			List<Contenido> obtenido = cancion1.buscar("c1");
 
+			// Creamos la lista que esperamos que devuelva la funcionalidad
+			// Todos los contenidos menos e1 y e2 junto con los anuncios
+			// correspondientes
+			List<Contenido> esperado = new ArrayList<Contenido>();
+			esperado.add(cancion1);
+			
+			
+			
+
+			// Comprobamos que tienen el mismo tamaño
+			assertEquals(esperado.size(), obtenido.size());
+
+			// Comprobamos que todos los contenidos esperados están en los obtenidos
+			for (Contenido c : esperado) {
+				assertTrue(obtenido.contains(c));
+			}
+		}
+		/*----------------------------------------------------------------------------*/
+		// Prueba eliminar funciona correctamente
+		@Test
+		public void eliminarContenidoTest() {
+			//Compruebo el tamaño de la lista de reproduccion antes de eliminar
+			List<Contenido> listaEmisoraAntes = emisora.obtenerListaReproduccion();
+			assertEquals(listaEmisoraAntes.size(), 2);
+			
+			emisora.eliminar(cancion1);
+			List<Contenido> listaEmisoraDespues = emisora.obtenerListaReproduccion();
+		
+			//Probamos
+			assertEquals(listaEmisoraDespues.size(), 1);
+		}
 		
 		
 		/*----------------------------------------------------------------------------*/
