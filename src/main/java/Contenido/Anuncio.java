@@ -9,26 +9,26 @@ public class Anuncio implements Contenido {
 	private int duracion = 5;
 	private List<Contenido> listaReproduccion;
 	
+	// Constructor de Anuncio
 	public Anuncio() {
 		listaReproduccion = new ArrayList<Contenido>();
 	}
 
-	//Obtiene el titulo
+	
 	public String obtenerTitulo() {
 		return titulo;
 	}
 	
-	//Obtiene la duraci�n
 	public int obtenerDuracion() {
 		return duracion;
 	}
 	
-	//Obtiene el anuncio
+	
 	public List<Contenido> obtenerListaReproduccion() {
 		return listaReproduccion;
 	}
 
-	//Busca
+	
 	public List<Contenido> buscar(String subcadena) {
 		if (titulo.contains(subcadena)){
 			listaReproduccion.add(this);
@@ -37,11 +37,15 @@ public class Anuncio implements Contenido {
 	}
 
 
-	//Anuncio no implementa esta funcionalidad
+	/*
+	 * Método no implementado por Anuncio.
+	 */
 	public void agregar(Contenido contenido, Contenido predecesor) {
 	}
 
-	//Anuncio no implementa esta funcionalidad
+	/*
+	 * Método no implementado por Anuncio.
+	 */
 	public void eliminar(Contenido contenido) {
 	}
 

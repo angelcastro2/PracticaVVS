@@ -15,22 +15,21 @@ public class Cancion implements Contenido {
 		listaReproduccion = new ArrayList<Contenido>();
 	}
 
-	//Obtiene el titulo
+	
 	public String obtenerTitulo() {
 		return titulo;
 	}
 	
-	//Obtiene la duraci�n
+	
 	public int obtenerDuracion() {
 		return duracion;
 	}
 
-	//Obtiene la lista de reproducci�n
+	
 	public List<Contenido> obtenerListaReproduccion() {
 		return listaReproduccion;
 	}
 
-	//Buscar
 	public List<Contenido> buscar(String subcadena) {
 		if (titulo.contains(subcadena)){
 			listaReproduccion.add(this);
@@ -38,12 +37,16 @@ public class Cancion implements Contenido {
 		return listaReproduccion;
 	}
 	
-	//Canci�n no implementa esta funcionalidad
+	/*
+	 * Método no implementado por Cancion.
+	 */
 	public void agregar(Contenido contenido, Contenido predecesor) {
 		return;
 	}
 
-	//Canci�n no implementa esta funcionalidad
+	/*
+	 * Método no implementado por Cancion.
+	 */
 	public void eliminar(Contenido contenido) {
 		return;
 	}
