@@ -6,24 +6,54 @@ import Contenido.Contenido;
 
 public interface Servidor {
 
-	// Devuelve el nombre del servidor
+
+	/**
+	 * Método que devuelve el nombre del servidor
+	 * @return devuelve el nombre del servidor
+	 * */
 	public String obtenerNombre();
 
-	// El servidor devuelve un token válido para 10 contenidos
+
+	/**
+	 * Método en el que el servidor devuelve un token válido para 10 contenidos
+	 * @return un token
+	 * */
 	public String alta();
 
 	// Inutiliza un token que aún no está agotado
+	/**
+	 * Método que inutiliza un token que aún no está agotado
+	 * @param token
+	 * */
 	public void baja(String token) throws TokenNotFoundException;
 
-	// Añade un contenido al servidor
+	/**
+	 * Método que añade un contenido al servidor.
+	 * @param Contenido
+	 * @param Token
+	 * */
 	public void agregar(Contenido contenido, String token) throws TokenNotFoundException, ContenidoDuplicadoException;
 
-	// Elimina un contenido del servidor
+	
+	/**
+	 * Método que elimina un contenido del servidor.
+	 * @param Contenido
+	 * @param Token
+	 * */
 	public void eliminar(Contenido contenido, String token) throws TokenNotFoundException;
 
 	// Busca contenidos cuyo nombre coincida con la subcadena total o
 	// parcialmente. Si se agota el token, a partir de ese momento, se considera
 	// token vacío y se añadirá un anuncio al principio, y un anuncio cada 3
 	// contenidos.
+	/**
+	 * Método que busca contenidos cuyo nombre coincida con la subcadena total o
+	 * parcialmente. Si se agota el token, a partir de ese momento, se considera
+	 * token vacío y se añadirá un anuncio al principio, y un anuncio cada 3
+	 * contenidos.
+	 * @param Contenido
+	 * @param Token
+	 * @return Lista de contenido
+	 * */
 	public List<Contenido> buscar(String subcadena, String token);
 }
