@@ -16,7 +16,7 @@ public interface Servidor {
 
 	/**
 	 * Método en el que el servidor devuelve un token válido para 10 contenidos
-	 * @return un token
+	 * @return token
 	 * */
 	public String alta();
 
@@ -29,16 +29,16 @@ public interface Servidor {
 
 	/**
 	 * Método que añade un contenido al servidor.
-	 * @param Contenido
-	 * @param Token
+	 * @param Contenido que el elemento que queremos eliminar.
+	 * @param Token especial para agregar y eliminar contenidos.
 	 * */
 	public void agregar(Contenido contenido, String token) throws TokenNotFoundException, ContenidoDuplicadoException;
 
 	
 	/**
 	 * Método que elimina un contenido del servidor.
-	 * @param Contenido
-	 * @param Token
+	 * @param Contenido que el elemento que queremos eliminar.
+	 * @param Token especial para agregar y eliminar contenidos.
 	 * */
 	public void eliminar(Contenido contenido, String token) throws TokenNotFoundException;
 
