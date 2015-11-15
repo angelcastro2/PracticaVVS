@@ -27,14 +27,18 @@ public class Cancion implements Contenido {
 
 	
 	public List<Contenido> obtenerListaReproduccion() {
-		return listaReproduccion;
+		List<Contenido> listaResultado= new ArrayList<Contenido>();
+		listaResultado.add(this);
+		
+		return listaResultado;
 	}
 
 	public List<Contenido> buscar(String subcadena) {
-		if (titulo.contains(subcadena)){
-			listaReproduccion.add(this);
-		}
-		return listaReproduccion;
+            List<Contenido> listaResultado= new ArrayList<Contenido>();
+            if (titulo.toLowerCase().contains(subcadena.toLowerCase())){
+		listaResultado.add(this);
+            }
+            return listaResultado;
 	}
 	
 	/*

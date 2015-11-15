@@ -87,10 +87,13 @@ public class ContenidoTest {
 		@Test
 		public void obtenerListaReproduccionTest() {
 			//Inicializo una lista vacia para las pruebas
-			List<Contenido> listaVacia = new ArrayList<Contenido>();
-			
-			assertEquals(cancion1.obtenerListaReproduccion(), listaVacia);
-			assertEquals(anuncio1.obtenerListaReproduccion(), listaVacia);
+			List<Contenido> listaCancion1 = new ArrayList<Contenido>();
+                        listaCancion1.add(cancion1);
+                        List<Contenido> listaAnuncio1 = new ArrayList<Contenido>();
+			listaAnuncio1.add(anuncio1);
+                        
+			assertEquals(cancion1.obtenerListaReproduccion(), listaCancion1);
+			assertEquals(anuncio1.obtenerListaReproduccion(), listaAnuncio1);
 			
 			//Creo una lista con los resultados esperados
 			//Con este Test tambien comprobamos que funciona el método Agregar
