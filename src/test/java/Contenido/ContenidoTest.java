@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.InstanceNotFoundException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,6 +19,7 @@ public class ContenidoTest {
 		Contenido cancion1;
 		Contenido cancion2;
 		Contenido cancion3;
+		Contenido cancion100;
 		
 		// Declaración de anuncios
 		Contenido anuncio1;
@@ -133,7 +136,7 @@ public class ContenidoTest {
 		/*----------------------------------------------------------------------------*/
 		// Prueba eliminar funciona correctamente
 		@Test
-		public void eliminarContenidoTest() {
+		public void eliminarContenidoTest() throws InstanceNotFoundException {
 			//Compruebo el tamaño de la lista de reproduccion antes de eliminar
 			List<Contenido> listaEmisoraAntes = emisora.obtenerListaReproduccion();
 			assertEquals(listaEmisoraAntes.size(), 2);
@@ -147,7 +150,18 @@ public class ContenidoTest {
 		
 		
 		/*----------------------------------------------------------------------------*/
-
+		// Pruebar que suelta correctamente la excepción
+		@Test(expected=InstanceNotFoundException.class)
+		public void eliminarContenidoTest2() throws InstanceNotFoundException {
+			//Compruebo el tamaño de la lista de reproduccion antes de eliminar
+			List<Contenido> listaEmisoraAntes = emisora.obtenerListaReproduccion();
+			assertEquals(listaEmisoraAntes.size(), 2);
+			
+			emisora.eliminar(cancion100);
+			List<Contenido> listaEmisoraDespues = emisora.obtenerListaReproduccion();
+				
+			
+		}
 		
 		
 		/*----------------------------------------------------------------------------*/

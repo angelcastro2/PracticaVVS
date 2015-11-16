@@ -2,6 +2,8 @@ package Contenido;
 
 import java.util.List;
 
+import javax.management.InstanceNotFoundException;
+
 public interface Contenido {
 
 	/**
@@ -38,6 +40,6 @@ public interface Contenido {
 	 *(solo la primera aparición en la lista)
 	 * @param  el contenido
 	 **/
-	public void eliminar(Contenido contenido);
+	public void eliminar(Contenido contenido) throws InstanceNotFoundException;
 	
 }

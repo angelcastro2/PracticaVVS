@@ -3,6 +3,8 @@ package Contenido;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.InstanceNotFoundException;
+
 public class Emisora implements Contenido {
 
 	private String titulo;
@@ -48,8 +50,20 @@ public class Emisora implements Contenido {
 		
 	}
 
-	public void eliminar(Contenido contenido) {
-		listaReproduccion.remove(contenido);
+	public void eliminar(Contenido contenido) throws InstanceNotFoundException {
+		int size = 0;
+		for (int i=0; i<listaReproduccion.size(); i++){
+			if (listaReproduccion.get(i).equals(contenido)){
+				size++;
+			}
+		}
+		if(size>0){
+			duracion = duracion-contenido.obtenerDuracion();
+			listaReproduccion.remove(contenido);
+		} else {
+			throw new InstanceNotFoundException();
+		}
+		
 		
 	}
 
