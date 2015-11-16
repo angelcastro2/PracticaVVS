@@ -216,7 +216,23 @@ public class ServidoresTest {
 			assertTrue(obtenido.contains(c));
 		}
 	}
+	// Prueba la busqueda en un servidor básico con lista vacia y token valido
+	@Test
+	public void buscarBasicoVacioTokenValidoTest() {
+		// Obtenemos la lista de contenidos de la funcion a probar
+		List<Contenido> obtenido = basico.buscar("vacio", Token.anadirToken());
+		
+		assertTrue (obtenido.isEmpty());
+	}
 
+	// Prueba la busqueda en un servidor básico con lista vacia y token invalido
+		@Test
+		public void buscarBasicoVacioTokenInvalidoTest() {
+			// Obtenemos la lista de contenidos de la funcion a probar
+			List<Contenido> obtenido = basico.buscar("vacio", "");
+			
+			assertTrue (obtenido.isEmpty());
+		}
 	// Prueba la busqueda en un servidor con respaldo
 	@Test
 	public void buscarConRespaldoTest() {
@@ -252,5 +268,7 @@ public class ServidoresTest {
 			assertTrue(obtenido.contains(c));
 		}
 	}
+	
+	
 
 }

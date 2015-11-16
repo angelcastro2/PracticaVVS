@@ -24,32 +24,33 @@ public class ServidorBasico extends ServidorGenerico {
 		for (Contenido c: super.getContenidos())
 			contenidos.addAll(c.buscar(subcadena));
 		
-		try {
-			// Comprobamos el token
-			Token.validarToken(token);
-
-			// Recorremos los contenidos filtrados y los añadimos a resultado
-			// usamos el token para consumir ese contenido
-			for (Contenido c : contenidos) {
-				resultado.add(c);
-				Token.usarToken(token);
-			}
-		} catch (TokenNotFoundException e) { // En este punto, acabamos el token
-												// o el token no era válido
-			// Añadimos un anuncio al principio
-			resultado.add(super.obtenerAnuncio());
-			// Empezamos en resultado.size para no recorrer los contenidos
-			// obtenidos con el token
-			for (int i = resultado.size() - 1; i < contenidos.size(); i++) {
-				resultado.add(contenidos.get(i));
-				// Si es multiplo de 3 metemos un anuncio. 0%3 es 0 por lo que
-				// tenemos que controlar que no meta anuncio entre el contenido
-				// 0 y el 1
-				if (((i % 3) == 0) && (i > 2))
-					resultado.add(super.obtenerAnuncio());
+		if (!contenidos.isEmpty()){
+			try {
+				// Comprobamos el token
+				Token.validarToken(token);
+	
+				// Recorremos los contenidos filtrados y los añadimos a resultado
+				// usamos el token para consumir ese contenido
+				for (Contenido c : contenidos) {
+					resultado.add(c);
+					Token.usarToken(token);
+				}
+			} catch (TokenNotFoundException e) { // En este punto, acabamos el token
+													// o el token no era válido
+				// Añadimos un anuncio al principio
+				resultado.add(super.obtenerAnuncio());
+				// Empezamos en resultado.size para no recorrer los contenidos
+				// obtenidos con el token
+				for (int i = resultado.size() - 1; i < contenidos.size(); i++) {
+					resultado.add(contenidos.get(i));
+					// Si es multiplo de 3 metemos un anuncio. 0%3 es 0 por lo que
+					// tenemos que controlar que no meta anuncio entre el contenido
+					// 0 y el 1
+					if (((i % 3) == 0) && (i > 2))
+						resultado.add(super.obtenerAnuncio());
+				}
 			}
 		}
-
 		return resultado;
 	}
 }
