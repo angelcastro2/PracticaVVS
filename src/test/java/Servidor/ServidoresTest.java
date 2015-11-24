@@ -216,6 +216,13 @@ public class ServidoresTest {
 			assertTrue(obtenido.contains(c));
 		}
 	}
+	
+	// Prueba la creacion de un token valido
+	@Test
+	public void buscarBasicoAltaTokenTest() throws TokenNotFoundException {
+		Token.validarToken(basico.alta());
+	}
+			
 	// Prueba la busqueda en un servidor básico con lista vacia y token valido
 	@Test
 	public void buscarBasicoVacioTokenValidoTest() {
