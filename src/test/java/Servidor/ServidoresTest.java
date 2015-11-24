@@ -163,7 +163,7 @@ public class ServidoresTest {
 	// cuando se intenta agregar un contenido existente en el servidor
 	@Test(expected = ContenidoDuplicadoException.class)
 	public void agregarContenidoDuplicadoTest() throws TokenNotFoundException, ContenidoDuplicadoException {
-		String token = Token.anadirToken();
+		String token = Token.tokenEspecial();
 		Contenido c16 = new Cancion("c16", 2);
 
 		basico.agregar(c16, token);
@@ -174,13 +174,21 @@ public class ServidoresTest {
 	// Prueba la funcion de agregar contenido a un servidor
 	@Test
 	public void eliminarContenidoTest() throws TokenNotFoundException, ContenidoDuplicadoException {
-		Contenido c16 = new Cancion("c16", 2);
-		try {
-			basico.agregar(c16, Token.anadirToken());
-			assertTrue(true);
-		} catch (TokenNotFoundException e) {
-			assertTrue(false);
-		}
+		String nombre = "nombreContenido";
+		Contenido c16 = new Cancion(nombre, 2);
+		
+		List<Contenido> lista = new ArrayList<Contenido>();
+		
+		String tokenEspecial = Token.tokenEspecial();
+		String tokenBusqueda = Token.anadirToken();
+		
+		basico.agregar(c16, tokenEspecial);
+		lista = basico.buscar(nombre, tokenBusqueda);
+		assertTrue (lista.contains(c16));
+		
+		basico.eliminar(c16, tokenEspecial);
+		lista = basico.buscar(nombre, tokenBusqueda);
+		assertTrue(!lista.contains(c16));
 	}
 
 	// Prueba la busqueda en un servidor básico
