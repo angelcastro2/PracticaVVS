@@ -38,17 +38,22 @@ public abstract class ServidorGenerico implements Servidor {
 	// TokenNotFoundException: El token no existe
 	// ContenidoDuplicadoException: El contenido ya está en el servidor
 	public void agregar(Contenido contenido, String token) throws TokenNotFoundException, ContenidoDuplicadoException {
-		Token.validarToken(token);
-		if (contenidos.contains(contenido))
-			throw new ContenidoDuplicadoException(contenido);
-		contenidos.add(contenido);
+		if(Token.esEspecial(token)){
+			if (contenidos.contains(contenido))
+				throw new ContenidoDuplicadoException(contenido);
+			contenidos.add(contenido);
+		}else{
+			throw new TokenNotFoundException(token);
+		}
 	}
 
 	// Elimina un contenido de un servidor, requiere un token válido.
 	// TokenNotFoundException: El token no existe
 	public void eliminar(Contenido contenido, String token) throws TokenNotFoundException {
-		Token.validarToken(token);
-		contenidos.remove(contenido);
+		if(Token.esEspecial(token))
+			contenidos.remove(contenido);
+		else
+			throw new TokenNotFoundException(token);
 	}
 
 	// Devuelve los contenidos del servidor
