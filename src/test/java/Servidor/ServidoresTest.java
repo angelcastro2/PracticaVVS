@@ -145,6 +145,12 @@ public class ServidoresTest {
 		}
 	}
 
+	@Test
+	public void especialTest(){
+		String token = Token.tokenEspecial();
+		assertTrue(Token.esEspecial(token));
+	}
+	
 	// Prueba la funcion de agregar contenido a un servidor
 	@Test
 	public void agregarContenidoTest() throws TokenNotFoundException, ContenidoDuplicadoException {
