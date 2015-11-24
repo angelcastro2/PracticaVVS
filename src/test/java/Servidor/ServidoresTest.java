@@ -157,6 +157,13 @@ public class ServidoresTest {
 		Contenido c16 = new Cancion("c16", 2);
 		basico.agregar(c16, Token.tokenEspecial);
 	}
+	
+	// Prueba la funcion de agregar contenido a un servidor con un token invalido
+	@Test(expected = TokenNotFoundException.class)
+	public void agregarContenidoTokenNotFoundTest() throws TokenNotFoundException, ContenidoDuplicadoException {
+		Contenido c16 = new Cancion("c16", 2);
+		basico.agregar(c16, "");
+	}
 
 	// Prueba que la funcion agregar lanza la excepción
 	// ContenidoDuplicadoException
@@ -190,7 +197,15 @@ public class ServidoresTest {
 		lista = basico.buscar(nombre, tokenBusqueda);
 		assertTrue(!lista.contains(c16));
 	}
-
+	
+	// Prueba la funcion de eliminar contenido a un servidor con un token invalido
+	@Test(expected = TokenNotFoundException.class)
+	public void eliminarContenidoTokenNotFoundTest() throws TokenNotFoundException, ContenidoDuplicadoException {
+		Contenido c16 = new Cancion("c16", 2);
+		basico.agregar(c16, "");
+		basico.eliminar(c16, "");
+	}
+	
 	// Prueba la busqueda en un servidor básico
 	@Test
 	public void buscarBasicoTest() {
