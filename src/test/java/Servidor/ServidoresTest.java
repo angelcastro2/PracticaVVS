@@ -42,8 +42,6 @@ public class ServidoresTest {
 
 	// Declaración de anuncios
 	Contenido a1;
-	Contenido a2;
-	Contenido a3;
 
 	// Listas de contenidos y anuncios
 	List<Contenido> contenidos;
@@ -79,8 +77,7 @@ public class ServidoresTest {
 
 		// Creamos Anuncios
 		a1 = new Anuncio();
-		a2 = new Anuncio();
-		a3 = new Anuncio();
+
 
 
 		// Creamos una lista con todos los contenidos
@@ -106,8 +103,7 @@ public class ServidoresTest {
 		// Creamos una lista con todos los anuncios
 		anuncios = new ArrayList<Contenido>();
 		anuncios.add(a1);
-		anuncios.add(a2);
-		anuncios.add(a3);
+
 
 		// Creamos un servidor básico con la lista de anuncios y contenidos
 		basico = new ServidorBasico(nombreBasico, contenidos, anuncios);
@@ -205,7 +201,7 @@ public class ServidoresTest {
 		esperado.add(c12);
 		esperado.add(c13);
 		esperado.add(c14);
-		esperado.add(a2);
+		esperado.add(a1);
 		esperado.add(c15);
 
 		// Comprobamos que tienen el mismo tamaño
@@ -272,7 +268,7 @@ public class ServidoresTest {
 		esperado.add(c11);
 		esperado.add(c12);
 		esperado.add(c13);
-		esperado.add(a2);
+		esperado.add(a1);
 		esperado.add(c14);
 		esperado.add(c15);
 
