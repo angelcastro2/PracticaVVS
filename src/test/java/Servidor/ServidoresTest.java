@@ -310,6 +310,17 @@ public class ServidoresTest {
 		}
 	}
 	
+	// Prueba la busqueda en un servidor con respaldo y devuelve el contenido sin acceder
+	// al servidor de respaldo
+	@Test
+	public void buscarConRespaldoContenidoDirectoTest() throws TokenNotFoundException, ContenidoDuplicadoException {
+		Contenido c = new Cancion("Cancion", 5);
+		
+		conRespaldo2.agregar(c, Token.tokenEspecial());
+		List<Contenido> obtenido = conRespaldo2.buscar("Cancion", Token.anadirToken());
+		assertEquals(1, obtenido.size());
+		assertTrue(obtenido.contains(c));
 	
+	}
 
 }
