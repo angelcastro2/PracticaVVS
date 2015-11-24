@@ -202,7 +202,7 @@ public class ServidoresTest {
 	@Test(expected = TokenNotFoundException.class)
 	public void eliminarContenidoTokenNotFoundTest() throws TokenNotFoundException, ContenidoDuplicadoException {
 		Contenido c16 = new Cancion("c16", 2);
-		basico.agregar(c16, "");
+		basico.agregar(c16, Token.tokenEspecial());
 		basico.eliminar(c16, "");
 	}
 	
