@@ -19,7 +19,6 @@ public class ServidoresTest {
 
 	// Variables estáticas de pruebas
 	private static String nombreBasico = "Servidor Básico";
-	private static String tokenFalso = "token falso";
 
 	// Declaración de contenidos
 	Contenido c1;
@@ -148,7 +147,7 @@ public class ServidoresTest {
 
 	// Prueba la funcion de agregar contenido a un servidor
 	@Test
-	public void agregarTest() throws TokenNotFoundException, ContenidoDuplicadoException {
+	public void agregarContenidoTest() throws TokenNotFoundException, ContenidoDuplicadoException {
 		Contenido c16 = new Cancion("c16", 2);
 		try {
 			basico.agregar(c16, Token.anadirToken());
@@ -170,11 +169,17 @@ public class ServidoresTest {
 		basico.agregar(c16, token);
 	}
 
-	// Prueba que la funcion agregar lanza la excepción TokenNotFoundException
-	// cuando se introduce un token falso
-	@Test(expected = TokenNotFoundException.class)
-	public void agregarTokenNotFoundTest() throws TokenNotFoundException, ContenidoDuplicadoException {
-		basico.agregar(c1, tokenFalso);
+	
+	// Prueba la funcion de agregar contenido a un servidor
+	@Test
+	public void eliminarContenidoTest() throws TokenNotFoundException, ContenidoDuplicadoException {
+		Contenido c16 = new Cancion("c16", 2);
+		try {
+			basico.agregar(c16, Token.anadirToken());
+			assertTrue(true);
+		} catch (TokenNotFoundException e) {
+			assertTrue(false);
+		}
 	}
 
 	// Prueba la busqueda en un servidor básico

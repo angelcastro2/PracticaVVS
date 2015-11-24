@@ -12,7 +12,25 @@ public class Token {
 	static Random rnd = new Random(); // Usado para generar números aleatorios
 	public static int len = 10; // Tamaño del token
 	public static int usos = 10; // Número de usos del token
-
+	public static String tokenEspecial = "U8/99Aj-";
+	
+	/*
+	 * Devuelve un token especial
+	 * @return token especial
+	 */
+	public static String tokenEspecial(){
+		return tokenEspecial;
+	}
+	
+	/*
+	 * Comprueba que es un token especial
+	 * @param token a validar
+	 * @return boolean que indica si es token especial o no
+	 */
+	public static boolean esEspecial(String token){
+		return tokenEspecial.equals(token);
+	}
+	
 	// Genera un token
 	public static String anadirToken() {
 		// Generamos un string aleatorio
