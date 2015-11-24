@@ -219,10 +219,19 @@ public class ServidoresTest {
 	
 	// Prueba la creacion de un token valido
 	@Test
-	public void buscarBasicoAltaTokenTest() throws TokenNotFoundException {
+	public void servidorGenericoAltaTokenTest() throws TokenNotFoundException {
 		Token.validarToken(basico.alta());
 	}
 			
+	// Prueba la eliminacion de un token valido
+	@Test(expected = TokenNotFoundException.class)
+	public void servidorGenericoBajaTokenTest() throws TokenNotFoundException {
+		String token = basico.alta();
+		assertTrue(!token.equals(""));
+		basico.baja(token);
+		Token.validarToken(token);
+	}
+	
 	// Prueba la busqueda en un servidor básico con lista vacia y token valido
 	@Test
 	public void buscarBasicoVacioTokenValidoTest() {
