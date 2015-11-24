@@ -155,12 +155,7 @@ public class ServidoresTest {
 	@Test
 	public void agregarContenidoTest() throws TokenNotFoundException, ContenidoDuplicadoException {
 		Contenido c16 = new Cancion("c16", 2);
-		try {
-			basico.agregar(c16, Token.anadirToken());
-			assertTrue(true);
-		} catch (TokenNotFoundException e) {
-			assertTrue(false);
-		}
+		basico.agregar(c16, Token.tokenEspecial);
 	}
 
 	// Prueba que la funcion agregar lanza la excepción
