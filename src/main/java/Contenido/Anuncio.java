@@ -7,11 +7,9 @@ public class Anuncio implements Contenido {
 
 	private String titulo = "PUBLICIDAD";
 	private int duracion = 5;
-	private List<Contenido> listaReproduccion;
 	
 	// Constructor de Anuncio
 	public Anuncio() {
-		listaReproduccion = new ArrayList<Contenido>();
 	}
 
 	

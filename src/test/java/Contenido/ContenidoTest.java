@@ -11,8 +11,6 @@ import javax.management.InstanceNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
 
-import Servidor.Token;
-
 public class ContenidoTest {
 
 		// Declaración de contenidos
@@ -158,7 +156,7 @@ public class ContenidoTest {
 			assertEquals(listaEmisoraAntes.size(), 2);
 			
 			emisora.eliminar(cancion100);
-			List<Contenido> listaEmisoraDespues = emisora.obtenerListaReproduccion();
+			emisora.obtenerListaReproduccion();
 				
 			
 		}
