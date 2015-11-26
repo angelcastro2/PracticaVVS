@@ -148,7 +148,7 @@ public class ContenidoTest {
 		
 		
 		/*----------------------------------------------------------------------------*/
-		// Pruebar que suelta correctamente la excepción
+		// Probar que suelta correctamente la excepción
 		@Test(expected=InstanceNotFoundException.class)
 		public void eliminarContenidoTest2() throws InstanceNotFoundException {
 			//Compruebo el tamaño de la lista de reproduccion antes de eliminar
@@ -163,7 +163,29 @@ public class ContenidoTest {
 		
 		
 		/*----------------------------------------------------------------------------*/
+                // Probar metodo buscar de anuncio
+		@Test
+		public void buscarAnuncioTest() {
+			// Obtenemos la lista de contenidos de la funcion a probar
+			List<Contenido> obtenido = anuncio1.buscar("PUBLICIDAD");
 
+			// Creamos la lista que esperamos que devuelva la funcionalidad
+			// Todos los contenidos menos e1 y e2 junto con los anuncios
+			// correspondientes
+			List<Contenido> esperado = new ArrayList<Contenido>();
+			esperado.add(anuncio1);
+			
+			
+			
+
+			// Comprobamos que tienen el mismo tamaño
+			assertEquals(esperado.size(), obtenido.size());
+
+			// Comprobamos que todos los contenidos esperados están en los obtenidos
+			for (Contenido c : esperado) {
+				assertTrue(obtenido.contains(c));
+			}
+		}
 		
 		
 		/*----------------------------------------------------------------------------*/
