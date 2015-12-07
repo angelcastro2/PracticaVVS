@@ -2,8 +2,12 @@
 package QuickCheck;
 
 import Contenido.Cancion;
+import Contenido.Contenido;
 import Generadores.IntegerGenerator;
 import Generadores.StringGenerator;
+import java.util.ArrayList;
+import java.util.List;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
@@ -25,7 +29,7 @@ public class ContenidoQCTest {
         String titulo = nameGenerator.next();
         int duracion = duracionGen.next();
         Cancion c = new Cancion(titulo, duracion);
-        assertTrue(c.obtenerTitulo().equals(titulo));
+        assertEquals(c.obtenerTitulo(), titulo);
     }
     
     //Test de obtenerDuracion
@@ -34,8 +38,17 @@ public class ContenidoQCTest {
         String titulo = nameGenerator.next();
         int duracion = duracionGen.next();
         Cancion c = new Cancion(titulo, duracion);
-        assertTrue(c.obtenerDuracion() == duracion);
+        assertEquals(c.obtenerDuracion(), duracion);
     }
     
+    
+    @Test
+    public final void obtenerListaReproduccionQCTest(){
+        Cancion c = new Cancion(nameGenerator.next(),duracionGen.next());
+        List<Contenido> listaEsperada = new ArrayList<Contenido>();
+        listaEsperada.add(c);
+        assertEquals(listaEsperada, c.obtenerListaReproduccion());
+    }
+ 
     
 }
