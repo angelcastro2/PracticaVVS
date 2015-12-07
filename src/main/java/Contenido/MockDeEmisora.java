@@ -24,7 +24,7 @@ public class MockDeEmisora implements Contenido {
 	
 	
 	
-	public String obtenerTitulo() {
+	public String obtenerTitulo() { 
 		return titulo;
 	}
 	
