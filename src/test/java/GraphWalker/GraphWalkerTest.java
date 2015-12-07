@@ -5,10 +5,7 @@
  */
 package GraphWalker;
 
-/**
- *
- * @author Angel
- */
+
 public class GraphWalkerTest {
     
 }
