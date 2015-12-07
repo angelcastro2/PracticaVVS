@@ -23,6 +23,11 @@
                         <version>0.6</version>
                         <scope>test</scope>
 		</dependency>
+                <dependency>
+                    <groupId>org.graphwalker</groupId>
+                    <artifactId>graphwalker-core</artifactId>
+                    <version>3.3.0</version>
+                </dependency>
 	</dependencies>
 
 	<build>
