@@ -3,12 +3,12 @@ package QuickCheck;
 
 import Contenido.Cancion;
 import Contenido.Contenido;
+import Contenido.Emisora;
 import Generadores.IntegerGenerator;
 import Generadores.StringGenerator;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
@@ -30,6 +30,11 @@ public class ContenidoQCTest {
         int duracion = duracionGen.next();
         Cancion c = new Cancion(titulo, duracion);
         assertEquals(c.obtenerTitulo(), titulo);
+        
+        String tituloEmisora = nameGenerator.next();
+        Emisora e = new Emisora(tituloEmisora);
+        assertEquals(e.obtenerTitulo(), tituloEmisora);
+        
     }
     
     //Test de obtenerDuracion
@@ -39,6 +44,8 @@ public class ContenidoQCTest {
         int duracion = duracionGen.next();
         Cancion c = new Cancion(titulo, duracion);
         assertEquals(c.obtenerDuracion(), duracion);
+        
+        
     }
     
     
@@ -48,7 +55,13 @@ public class ContenidoQCTest {
         List<Contenido> listaEsperada = new ArrayList<Contenido>();
         listaEsperada.add(c);
         assertEquals(listaEsperada, c.obtenerListaReproduccion());
+        
+        String tituloEmisora = nameGenerator.next();
+        Emisora e = new Emisora(tituloEmisora);
+        e.agregar(c, null);
+        assertEquals(listaEsperada, e.obtenerListaReproduccion());
     }
  
+    
     
 }
