@@ -24,6 +24,10 @@ public class ContenidoQCTest {
     
     
     //Test de obtenerTitulo
+
+    /**
+     *
+     */
     @Test
     public void obtenerTituloQCTest(){
         String titulo = nameGenerator.next();
@@ -38,6 +42,10 @@ public class ContenidoQCTest {
     }
     
     //Test de obtenerDuracion
+
+    /**
+     *
+     */
     @Test
     public void obtenerDuracionQCTest(){
         String titulo = nameGenerator.next();
@@ -48,7 +56,7 @@ public class ContenidoQCTest {
         
     }
     
-    
+    // Test de obtenerListaReproduccion
     @Test
     public final void obtenerListaReproduccionQCTest(){
         Cancion c = new Cancion(nameGenerator.next(),duracionGen.next());
@@ -62,6 +70,28 @@ public class ContenidoQCTest {
         assertEquals(listaEsperada, e.obtenerListaReproduccion());
     }
  
+    
+    // Test de buscar
+    @Test
+    public final void buscarQCTest(){
+        String titulo = nameGenerator.next();
+        int duracion = duracionGen.next();
+        Cancion c = new Cancion(titulo, duracion);
+        List<Contenido> listaEsperada = new ArrayList<Contenido>();
+        listaEsperada.add(c);
+        assertEquals(listaEsperada,c.buscar(titulo));
+        
+        
+        String tituloEmisora = nameGenerator.next();
+        Emisora e = new Emisora(tituloEmisora);
+        e.agregar(c, null);
+        assertEquals(listaEsperada, e.buscar(titulo));
+        
+        
+        
+        
+    }
+    
     
     
 }

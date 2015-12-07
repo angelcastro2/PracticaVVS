@@ -12,6 +12,10 @@ public class StringGenerator implements Generator<String>{
     
     private final Generator<String> gen = PrimitiveGenerators.strings(allowedCharacters,1,30);
     
+    /**
+     *
+     * @return String generado
+     */
     public String next() {
         return new String(gen.next());
     }

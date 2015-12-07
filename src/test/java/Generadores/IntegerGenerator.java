@@ -11,6 +11,10 @@ public class IntegerGenerator implements Generator<Integer>{
     
     private final Generator<Integer> gen = PrimitiveGenerators.integers();
     
+    /**
+     *
+     * @return Integer generado
+     */
     public Integer next() {
         return new Integer(gen.next());
     }
