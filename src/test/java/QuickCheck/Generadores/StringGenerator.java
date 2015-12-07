@@ -1,4 +1,4 @@
-package Generadores;
+package QuickCheck.Generadores;
 
 import net.java.quickcheck.Generator;
 import net.java.quickcheck.generator.PrimitiveGenerators;
