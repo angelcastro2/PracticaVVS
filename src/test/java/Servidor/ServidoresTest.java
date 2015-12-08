@@ -210,7 +210,8 @@ public class ServidoresTest {
 	@Test
 	public void buscarBasicoTest() {
 		// Obtenemos la lista de contenidos de la funcion a probar
-		List<Contenido> obtenido = basico.buscar("c", Token.anadirToken());
+		String token = Token.anadirToken();
+		List<Contenido> obtenido = basico.buscar("c", token);
 
 		// Creamos la lista que esperamos que devuelva la funcionalidad
 		// Todos los contenidos menos e1 y e2 junto con los anuncios
@@ -231,6 +232,45 @@ public class ServidoresTest {
 		esperado.add(c13);
 		esperado.add(c14);
 		esperado.add(a1);
+		esperado.add(c15);
+
+		// Comprobamos que tienen el mismo tamaño
+		assertEquals(esperado.size(), obtenido.size());
+
+		// Comprobamos que todos los contenidos esperados están en los obtenidos
+		for (Contenido c : esperado) {
+			assertTrue(obtenido.contains(c));
+		}
+	}
+	
+	// Prueba la busqueda en un servidor básico sin token
+	@Test
+	public void buscarBasicoSinTokenTest() {
+		// Obtenemos la lista de contenidos de la funcion a probar
+		List<Contenido> obtenido = basico.buscar("c", "");
+
+		// Creamos la lista que esperamos que devuelva la funcionalidad
+		// Todos los contenidos menos e1 y e2 junto con los anuncios
+		// correspondientes
+		List<Contenido> esperado = new ArrayList<Contenido>();
+		esperado.add(a1);
+		esperado.add(c1);
+		esperado.add(c2);
+		esperado.add(c3);
+		esperado.add(a1);		
+		esperado.add(c4);
+		esperado.add(c5);
+		esperado.add(c6);
+		esperado.add(a1);		
+		esperado.add(c7);
+		esperado.add(c8);
+		esperado.add(c9);
+		esperado.add(a1);		
+		esperado.add(c11);
+		esperado.add(c12);
+		esperado.add(c13);
+		esperado.add(a1);
+		esperado.add(c14);
 		esperado.add(c15);
 
 		// Comprobamos que tienen el mismo tamaño

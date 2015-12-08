@@ -46,8 +46,9 @@ public class ServidorBasico extends ServidorGenerico {
 					// Si es multiplo de 3 metemos un anuncio. 0%3 es 0 por lo que
 					// tenemos que controlar que no meta anuncio entre el contenido
 					// 0 y el 1
-					if (((i % 3) == 0) && (i > 2))
-						resultado.add(super.obtenerAnuncio());
+					if ((i % 3) == 0)
+						if (i>0)
+							resultado.add(super.obtenerAnuncio());
 				}
 			}
 		}

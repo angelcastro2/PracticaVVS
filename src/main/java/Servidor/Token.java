@@ -67,16 +67,16 @@ public class Token {
 			int usos = tokens.get(token);
 			usos = usos - 1;
 			if (usos > 0)
-				tokens.put(token, usos);
-			else
-				eliminarToken(token);
+				tokens.put(token, usos);			
+			else				
+				eliminarToken(token);					
 		}
 	}
 
 	// Funcion que devuelve un string aleatorio
 	private static String randomString() {
 		StringBuilder sb = new StringBuilder(len);
-		for (int i = 0; i < len; i++)
+		for (int i = 0; ((i < len)&&(i>=0)); i++)
 			sb.append(AB.charAt(rnd.nextInt(AB.length())));
 		return sb.toString();
 	}
