@@ -66,7 +66,7 @@ public class Token {
 		else {
 			int usos = tokens.get(token);
 			usos = usos - 1;
-			if (usos > 0)
+			if (usos > 1)
 				tokens.put(token, usos);			
 			else				
 				eliminarToken(token);					
