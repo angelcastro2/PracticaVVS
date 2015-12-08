@@ -81,21 +81,23 @@ public class ServidoresTest {
 
 		// Creamos una lista con todos los contenidos
 		contenidos = new ArrayList<Contenido>();
+		
+		c10.agregar(c11,null);
+		c10.agregar(c12, c11);
+		c10.agregar(c13, c12);
+		c10.agregar(c14, c13);
+		c10.agregar(c15, c14);
+		
 		contenidos.add(c1);
 		contenidos.add(c2);
 		contenidos.add(c3);
 		contenidos.add(c4);
 		contenidos.add(c5);
 		contenidos.add(c6);
-		contenidos.add(c7);
+		contenidos.add(c10);
 		contenidos.add(c8);
 		contenidos.add(c9);
-		c10.agregar(c11,null);
-		c10.agregar(c12, c11);
-		c10.agregar(c13, c12);
-		c10.agregar(c14, c13);
-		c10.agregar(c15, c14);
-		contenidos.add(c10);
+		contenidos.add(c7);
 		contenidos.add(e1);
 		contenidos.add(e2);
 
@@ -241,6 +243,10 @@ public class ServidoresTest {
 		for (Contenido c : esperado) {
 			assertTrue(obtenido.contains(c));
 		}
+		
+		assertEquals(obtenido.get(10), a1);	
+		assertEquals(obtenido.get(14), a1);
+		
 	}
 	
 	// Prueba la busqueda en un servidor básico sin token
@@ -280,6 +286,13 @@ public class ServidoresTest {
 		for (Contenido c : esperado) {
 			assertTrue(obtenido.contains(c));
 		}
+		
+		assertEquals(obtenido.get(0), a1);
+		assertEquals(obtenido.get(4), a1);
+		assertEquals(obtenido.get(8), a1);
+		assertEquals(obtenido.get(12), a1);	
+		assertEquals(obtenido.get(16), a1);
+		
 	}
 	
 	// Prueba la creacion de un token valido
@@ -333,12 +346,12 @@ public class ServidoresTest {
 		esperado.add(c7);
 		esperado.add(c8);
 		esperado.add(c9);
-		esperado.add(a1);
 		esperado.add(c11);
+		esperado.add(a1);		
 		esperado.add(c12);
 		esperado.add(c13);
-		esperado.add(a1);
 		esperado.add(c14);
+		esperado.add(a1);
 		esperado.add(c15);
 
 		// Creamos la lista que esperamos que devuelva la funcionalidad
@@ -348,6 +361,8 @@ public class ServidoresTest {
 		for (Contenido c : esperado) {
 			assertTrue(obtenido.contains(c));
 		}
+		assertEquals(obtenido.get(10), a1);
+		assertEquals(obtenido.get(14), a1);
 	}
 	
 	// Prueba la busqueda en un servidor con respaldo y devuelve el contenido sin acceder
