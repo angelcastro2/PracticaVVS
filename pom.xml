@@ -18,10 +18,10 @@
 		</dependency>
 		
 		<dependency>
-    		<groupId>net.java.quickcheck</groupId>
+                        <groupId>net.java.quickcheck</groupId>
    			<artifactId>quickcheck</artifactId>
-    		<version>0.6</version>
-    		<scope>test</scope>
+                        <version>0.6</version>
+                        <scope>test</scope>
 		</dependency>
 	</dependencies>
 
