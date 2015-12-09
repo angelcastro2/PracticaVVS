@@ -25,7 +25,7 @@ public abstract class ServidorGenerico implements Servidor {
 	}
 
 	// Crea un token con 10 usos
-	public String alta() {
+	public String alta() throws Exception {
 		return Token.anadirToken();
 	}
 
