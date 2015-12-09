@@ -129,14 +129,14 @@ public class ServidoresTest {
 
 	// Prueba que la funcion alta devueve un token
 	@Test
-	public void altaTest() {
+	public void altaTest() throws Exception {
 		assertTrue(!Token.anadirToken().equals(""));
 		assertTrue(Token.anadirToken() != null);
 	}
 
 	// Prueba que la funcion baja elimina un token dado
 	@Test
-	public void bajaTest() {
+	public void bajaTest() throws Exception {
 		String token = Token.anadirToken();
 		Token.eliminarToken(token);
 		try {
@@ -182,7 +182,7 @@ public class ServidoresTest {
 	
 	// Prueba la funcion de agregar contenido a un servidor
 	@Test
-	public void eliminarContenidoTest() throws TokenNotFoundException, ContenidoDuplicadoException {
+	public void eliminarContenidoTest() throws Exception {
 		String nombre = "nombreContenido";
 		Contenido c16 = new Cancion(nombre, 2);
 		
@@ -210,7 +210,7 @@ public class ServidoresTest {
 	
 	// Prueba la busqueda en un servidor básico
 	@Test
-	public void buscarBasicoTest() {
+	public void buscarBasicoTest() throws Exception {
 		// Obtenemos la lista de contenidos de la funcion a probar
 		String token = Token.anadirToken();
 		List<Contenido> obtenido = basico.buscar("c", token);
@@ -297,13 +297,13 @@ public class ServidoresTest {
 	
 	// Prueba la creacion de un token valido
 	@Test
-	public void servidorGenericoAltaTokenTest() throws TokenNotFoundException {
+	public void servidorGenericoAltaTokenTest() throws Exception {
 		Token.validarToken(basico.alta());
 	}
 			
 	// Prueba la eliminacion de un token valido
 	@Test(expected = TokenNotFoundException.class)
-	public void servidorGenericoBajaTokenTest() throws TokenNotFoundException {
+	public void servidorGenericoBajaTokenTest() throws Exception {
 		String token = basico.alta();
 		assertTrue(!token.equals(""));
 		basico.baja(token);
@@ -312,7 +312,7 @@ public class ServidoresTest {
 	
 	// Prueba la busqueda en un servidor básico con lista vacia y token valido
 	@Test
-	public void buscarBasicoVacioTokenValidoTest() {
+	public void buscarBasicoVacioTokenValidoTest() throws Exception {
 		// Obtenemos la lista de contenidos de la funcion a probar
 		List<Contenido> obtenido = basico.buscar("vacio", Token.anadirToken());
 		
@@ -329,7 +329,7 @@ public class ServidoresTest {
 		}
 	// Prueba la busqueda en un servidor con respaldo
 	@Test
-	public void buscarConRespaldoTest() {
+	public void buscarConRespaldoTest() throws Exception {
 		// Obtenemos la lista de contenidos de la funcion a probar
 		List<Contenido> obtenido = conRespaldo2.buscar("c", Token.anadirToken());
 
@@ -368,7 +368,7 @@ public class ServidoresTest {
 	// Prueba la busqueda en un servidor con respaldo y devuelve el contenido sin acceder
 	// al servidor de respaldo
 	@Test
-	public void buscarConRespaldoContenidoDirectoTest() throws TokenNotFoundException, ContenidoDuplicadoException {
+	public void buscarConRespaldoContenidoDirectoTest() throws Exception {
 		Contenido c = new Cancion("Cancion", 5);
 		
 		conRespaldo2.agregar(c, Token.tokenEspecial());

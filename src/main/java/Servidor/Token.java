@@ -32,7 +32,7 @@ public class Token {
 	}
 	
 	// Genera un token
-	public static String anadirToken() {
+	public static String anadirToken() throws Exception {
 		// Generamos un string aleatorio
 		String token = randomString();
 		// Si el token generado ya existe, volvemos ejecutar la función
@@ -74,10 +74,11 @@ public class Token {
 	}
 
 	// Funcion que devuelve un string aleatorio
-	private static String randomString() {
+	private static String randomString() throws Exception {
 		StringBuilder sb = new StringBuilder(len);
 		for (int i = 0; ((i < len)&&(i>=0)); i++)
 			sb.append(AB.charAt(rnd.nextInt(AB.length())));
+		if (sb.toString().equals("")) throw new Exception();
 		return sb.toString();
 	}
 

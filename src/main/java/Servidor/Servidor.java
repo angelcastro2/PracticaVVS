@@ -18,7 +18,7 @@ public interface Servidor {
 	 * Método en el que el servidor devuelve un token válido para 10 contenidos
 	 * @return token
 	 * */
-	public String alta();
+	public String alta() throws Exception;
 
 	// Inutiliza un token que aún no está agotado
 	/**
