@@ -55,7 +55,7 @@
                 <plugin>
                     <groupId>org.graphwalker</groupId>
                     <artifactId>graphwalker-maven-plugin</artifactId>
-                    <version>${graphwalker.version}</version>
+                    <version>3.3.0</version>
                     <!-- Bind goals to the default lifecycle -->
                     <executions>
                         <execution>
@@ -88,6 +88,16 @@
             <artifactId>graphwalker-core</artifactId>
             <version>3.3.0</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.graphwalker</groupId>
+            <artifactId>graphwalker-java</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.graphwalker</groupId>
+            <artifactId>graphwalker-maven-plugin</artifactId>
+            <version>3.3.0</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
