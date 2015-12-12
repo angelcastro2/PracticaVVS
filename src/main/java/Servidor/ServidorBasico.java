@@ -20,7 +20,7 @@ public class ServidorBasico extends ServidorGenerico {
 
 		List<Contenido> contenidos = new ArrayList<Contenido>(); // Contenidos del servidor
 		List<Contenido> resultado = new ArrayList<Contenido>(); // Contenidos + Anuncios a devolver
-		
+		int contador = 0;
 		for (Contenido c: super.getContenidos())
 			contenidos.addAll(c.buscar(subcadena));
 		
@@ -36,18 +36,21 @@ public class ServidorBasico extends ServidorGenerico {
 					Token.usarToken(token);
 				}
 			} catch (TokenNotFoundException e) { // En este punto, acabamos el token
-													// o el token no era válido
+							     				// o el token no era válido
 				// Añadimos un anuncio al principio
 				resultado.add(super.obtenerAnuncio());
 				// Empezamos en resultado.size para no recorrer los contenidos
 				// obtenidos con el token
 				for (int i = resultado.size() - 1; i < contenidos.size(); i++) {
 					resultado.add(contenidos.get(i));
+					contador ++;
 					// Si es multiplo de 3 metemos un anuncio. 0%3 es 0 por lo que
 					// tenemos que controlar que no meta anuncio entre el contenido
 					// 0 y el 1
-					if (((i % 3) == 0) && (i > 2))
+					if(contador == 3){
 						resultado.add(super.obtenerAnuncio());
+						contador = 0;
+					}
 				}
 			}
 		}

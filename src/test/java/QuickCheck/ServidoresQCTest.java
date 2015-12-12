@@ -134,7 +134,7 @@ public class ServidoresQCTest {
         
         // Prueba la funcion de agregar contenido a un servidor
 	@Test
-	public void AgregarEliminarContenidoTest() throws TokenNotFoundException, ContenidoDuplicadoException {
+	public void AgregarEliminarContenidoTest() throws Exception {
 		String nombre = nameGenerator.next();
 		Contenido c16 = new Cancion(nombre, 2);
 		
@@ -154,7 +154,7 @@ public class ServidoresQCTest {
         
         // Prueba la busqueda en un servidor básico con lista vacia y token valido
         @Test
-	public void buscarBasicoVacioTokenValidoTest() {
+	public void buscarBasicoVacioTokenValidoTest() throws Exception {
 		// Obtenemos la lista de contenidos de la funcion a probar
 		List<Contenido> obtenido = basico.buscar(nameGenerator.next(), Token.anadirToken());
 		
@@ -170,10 +170,10 @@ public class ServidoresQCTest {
 			assertTrue (obtenido.isEmpty());
 		}
                 
-        // Prueba la busqueda en un servidor con respaldo y devuelve el contenido sin acceder
+    // Prueba la busqueda en un servidor con respaldo y devuelve el contenido sin acceder
 	// al servidor de respaldo
 	@Test
-	public void buscarConRespaldoContenidoDirectoTest() throws TokenNotFoundException, ContenidoDuplicadoException {
+	public void buscarConRespaldoContenidoDirectoTest() throws Exception {
                 String titulo = nameGenerator.next();
             
                 Contenido c = new Cancion(titulo, 5);

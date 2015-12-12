@@ -81,21 +81,23 @@ public class ServidoresTest {
 
 		// Creamos una lista con todos los contenidos
 		contenidos = new ArrayList<Contenido>();
+		
+		c10.agregar(c11,null);
+		c10.agregar(c12, c11);
+		c10.agregar(c13, c12);
+		c10.agregar(c14, c13);
+		c10.agregar(c15, c14);
+		
 		contenidos.add(c1);
 		contenidos.add(c2);
 		contenidos.add(c3);
 		contenidos.add(c4);
 		contenidos.add(c5);
 		contenidos.add(c6);
-		contenidos.add(c7);
+		contenidos.add(c10);
 		contenidos.add(c8);
 		contenidos.add(c9);
-		c10.agregar(c11,null);
-		c10.agregar(c12, c11);
-		c10.agregar(c13, c12);
-		c10.agregar(c14, c13);
-		c10.agregar(c15, c14);
-		contenidos.add(c10);
+		contenidos.add(c7);
 		contenidos.add(e1);
 		contenidos.add(e2);
 
@@ -127,14 +129,14 @@ public class ServidoresTest {
 
 	// Prueba que la funcion alta devueve un token
 	@Test
-	public void altaTest() {
+	public void altaTest() throws Exception {
 		assertTrue(!Token.anadirToken().equals(""));
 		assertTrue(Token.anadirToken() != null);
 	}
 
 	// Prueba que la funcion baja elimina un token dado
 	@Test
-	public void bajaTest() {
+	public void bajaTest() throws Exception {
 		String token = Token.anadirToken();
 		Token.eliminarToken(token);
 		try {
@@ -180,7 +182,7 @@ public class ServidoresTest {
 	
 	// Prueba la funcion de agregar contenido a un servidor
 	@Test
-	public void eliminarContenidoTest() throws TokenNotFoundException, ContenidoDuplicadoException {
+	public void eliminarContenidoTest() throws Exception {
 		String nombre = "nombreContenido";
 		Contenido c16 = new Cancion(nombre, 2);
 		
@@ -208,9 +210,10 @@ public class ServidoresTest {
 	
 	// Prueba la busqueda en un servidor básico
 	@Test
-	public void buscarBasicoTest() {
+	public void buscarBasicoTest() throws Exception {
 		// Obtenemos la lista de contenidos de la funcion a probar
-		List<Contenido> obtenido = basico.buscar("c", Token.anadirToken());
+		String token = Token.anadirToken();
+		List<Contenido> obtenido = basico.buscar("c", token);
 
 		// Creamos la lista que esperamos que devuelva la funcionalidad
 		// Todos los contenidos menos e1 y e2 junto con los anuncios
@@ -240,17 +243,67 @@ public class ServidoresTest {
 		for (Contenido c : esperado) {
 			assertTrue(obtenido.contains(c));
 		}
+		
+		assertEquals(obtenido.get(10), a1);	
+		assertEquals(obtenido.get(14), a1);
+		
+	}
+	
+	// Prueba la busqueda en un servidor básico sin token
+	@Test
+	public void buscarBasicoSinTokenTest() {
+		// Obtenemos la lista de contenidos de la funcion a probar
+		List<Contenido> obtenido = basico.buscar("c", "");
+
+		// Creamos la lista que esperamos que devuelva la funcionalidad
+		// Todos los contenidos menos e1 y e2 junto con los anuncios
+		// correspondientes
+		List<Contenido> esperado = new ArrayList<Contenido>();
+		esperado.add(a1);
+		esperado.add(c1);
+		esperado.add(c2);
+		esperado.add(c3);
+		esperado.add(a1);		
+		esperado.add(c4);
+		esperado.add(c5);
+		esperado.add(c6);
+		esperado.add(a1);		
+		esperado.add(c7);
+		esperado.add(c8);
+		esperado.add(c9);
+		esperado.add(a1);		
+		esperado.add(c11);
+		esperado.add(c12);
+		esperado.add(c13);
+		esperado.add(a1);
+		esperado.add(c14);
+		esperado.add(c15);
+
+		// Comprobamos que tienen el mismo tamaño
+		assertEquals(esperado.size(), obtenido.size());
+
+		// Comprobamos que todos los contenidos esperados están en los obtenidos
+		for (Contenido c : esperado) {
+			assertTrue(obtenido.contains(c));
+		}
+		
+		assertEquals(obtenido.get(0), a1);
+		assertEquals(obtenido.get(4), a1);
+		assertEquals(obtenido.get(8), a1);
+		assertEquals(obtenido.get(12), a1);	
+		assertEquals(obtenido.get(16), a1);
+		
 	}
 	
 	// Prueba la creacion de un token valido
 	@Test
-	public void servidorGenericoAltaTokenTest() throws TokenNotFoundException {
+	public void servidorGenericoAltaTokenTest() throws Exception {
 		Token.validarToken(basico.alta());
 	}
 			
 	// Prueba la eliminacion de un token valido
 	@Test(expected = TokenNotFoundException.class)
-	public void servidorGenericoBajaTokenTest() throws TokenNotFoundException {
+	public void servidorGenericoBajaTokenTest() throws Exception {
 		String token = basico.alta();
 		assertTrue(!token.equals(""));
 		basico.baja(token);
@@ -259,7 +312,7 @@ public class ServidoresTest {
 	
 	// Prueba la busqueda en un servidor básico con lista vacia y token valido
 	@Test
-	public void buscarBasicoVacioTokenValidoTest() {
+	public void buscarBasicoVacioTokenValidoTest() throws Exception {
 		// Obtenemos la lista de contenidos de la funcion a probar
 		List<Contenido> obtenido = basico.buscar("vacio", Token.anadirToken());
 		
@@ -276,7 +329,7 @@ public class ServidoresTest {
 		}
 	// Prueba la busqueda en un servidor con respaldo
 	@Test
-	public void buscarConRespaldoTest() {
+	public void buscarConRespaldoTest() throws Exception {
 		// Obtenemos la lista de contenidos de la funcion a probar
 		List<Contenido> obtenido = conRespaldo2.buscar("c", Token.anadirToken());
 
@@ -293,12 +346,12 @@ public class ServidoresTest {
 		esperado.add(c7);
 		esperado.add(c8);
 		esperado.add(c9);
-		esperado.add(a1);
 		esperado.add(c11);
+		esperado.add(a1);		
 		esperado.add(c12);
 		esperado.add(c13);
-		esperado.add(a1);
 		esperado.add(c14);
+		esperado.add(a1);
 		esperado.add(c15);
 
 		// Creamos la lista que esperamos que devuelva la funcionalidad
@@ -308,12 +361,14 @@ public class ServidoresTest {
 		for (Contenido c : esperado) {
 			assertTrue(obtenido.contains(c));
 		}
+		assertEquals(obtenido.get(10), a1);
+		assertEquals(obtenido.get(14), a1);
 	}
 	
 	// Prueba la busqueda en un servidor con respaldo y devuelve el contenido sin acceder
 	// al servidor de respaldo
 	@Test
-	public void buscarConRespaldoContenidoDirectoTest() throws TokenNotFoundException, ContenidoDuplicadoException {
+	public void buscarConRespaldoContenidoDirectoTest() throws Exception {
 		Contenido c = new Cancion("Cancion", 5);
 		
 		conRespaldo2.agregar(c, Token.tokenEspecial());

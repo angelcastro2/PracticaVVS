@@ -137,13 +137,17 @@ public class ContenidoTest {
 		public void eliminarContenidoTest() throws InstanceNotFoundException {
 			//Compruebo el tamaño de la lista de reproduccion antes de eliminar
 			List<Contenido> listaEmisoraAntes = emisora.obtenerListaReproduccion();
+			int duracion = emisora.obtenerDuracion();
+			
 			assertEquals(listaEmisoraAntes.size(), 2);
 			
 			emisora.eliminar(cancion1);
 			List<Contenido> listaEmisoraDespues = emisora.obtenerListaReproduccion();
-		
+			
 			//Probamos
 			assertEquals(listaEmisoraDespues.size(), 1);
+			//Error detectado con PIT 
+			assertEquals(emisora.obtenerDuracion(), duracion - cancion1.obtenerDuracion());
 		}
 		
 		
