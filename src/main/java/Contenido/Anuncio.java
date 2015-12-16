@@ -7,8 +7,10 @@ public class Anuncio implements Contenido {
 
     private static final String TITULO = "PUBLICIDAD";
     private int duracion = 5;
-
-    // Constructor de Anuncio
+    
+    /**
+     * Constructor de Anuncio 
+     */
     public Anuncio() {
     }
 
