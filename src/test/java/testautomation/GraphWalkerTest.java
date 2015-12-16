@@ -1,4 +1,4 @@
-package GraphWalker;
+package testautomation;
 
 import Contenido.Cancion;
 import Contenido.Contenido;
@@ -23,7 +23,7 @@ import org.junit.Test;
 
 public class GraphWalkerTest extends ExecutionContext implements grafica {
 
-    public final static Path GRAFICA_PATH = Paths.get("main/resources/model/grafica.graphml");
+    public final static Path GRAFICA_PATH = Paths.get("src/main/resources/testautomation/grafica.graphml");
 
     Servidor basico;
     Servidor conRespaldo1;
