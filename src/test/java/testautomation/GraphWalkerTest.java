@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.graphwalker.core.condition.AlternativeCondition;
 import org.graphwalker.core.condition.EdgeCoverage;
 import org.graphwalker.core.condition.ReachedVertex;
 import org.graphwalker.core.condition.TimeDuration;
@@ -91,7 +92,7 @@ public class GraphWalkerTest extends ExecutionContext implements grafica {
     }
 
     /*Test*/
-  
+  /*
     @Test
     public void runSmokeTest() {
         new TestBuilder()
@@ -117,9 +118,35 @@ public class GraphWalkerTest extends ExecutionContext implements grafica {
         new TestBuilder()
             .setModel(GRAFICA_PATH)
             .setContext(new GraphWalkerTest())
-            .setPathGenerator(new RandomPath(new TimeDuration(3, TimeUnit.MINUTES))) // atravesamos aleatoriamente o grafo durante 3 minutos
+            .setPathGenerator(new RandomPath(new TimeDuration(1, TimeUnit.MINUTES))) // atravesamos aleatoriamente o grafo durante 3 minutos
             .setStart("inicializarServidor") // primeira chamada
             .execute();
     }
-
+*/
+    
+    	@Test
+    public void runSmokeTest() {
+        new TestBuilder()
+            .addModel(GRAFICA_PATH,new AStarPath(new ReachedVertex("ServidorConContenidos")))
+            .execute();
+    }
+	
+	@Test
+    public void runFunctionalTest() {
+		AlternativeCondition condition = new AlternativeCondition();
+		condition.addStopCondition(new EdgeCoverage(100));
+		condition.addStopCondition(new TimeDuration(15, TimeUnit.SECONDS));
+		new TestBuilder()
+            .addModel(GRAFICA_PATH,new RandomPath(condition))
+            .execute();
+    }
+	
+	@Test
+    public void runStabilityTest() {
+        new TestBuilder()
+            .addModel(GRAFICA_PATH,new RandomPath(new TimeDuration(15, TimeUnit.SECONDS)))
+            .execute();
+    }
+    
+    
 }
