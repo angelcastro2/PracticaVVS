@@ -18,6 +18,8 @@ import Contenido.Anuncio;
 import Contenido.Cancion;
 import Contenido.Contenido;
 import Contenido.Emisora;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 //Tests de las funcionalidades de los servidores de contenidos
 @RunWith(PowerMockRunner.class)
@@ -48,7 +50,11 @@ public class MockServidoresTest {
         PowerMockito.mockStatic(Token.class);
         PowerMockito.when(Token.tokenEspecial()).thenReturn("TokenEspecial");
         PowerMockito.when(Token.esEspecial("TokenEspecial")).thenReturn(true);
-        PowerMockito.when(Token.anadirToken()).thenReturn("TokenValido");
+            try {
+                PowerMockito.when(Token.anadirToken()).thenReturn("TokenValido");
+            } catch (Exception ex) {
+                Logger.getLogger(MockServidoresTest.class.getName()).log(Level.SEVERE, null, ex);
+            }
 		when(c.obtenerTitulo()).thenReturn("Cancion");
 		when(c.obtenerDuracion()).thenReturn(10);
 		List<Contenido> lista = new ArrayList<Contenido>();		
@@ -56,7 +62,11 @@ public class MockServidoresTest {
 		when(c.buscar(c.obtenerTitulo())).thenReturn(lista);
 		
 		basico.agregar(c, Token.tokenEspecial() );
-		assertTrue(basico.buscar(c.obtenerTitulo(), Token.anadirToken()).get(0).equals(c));
+            try {
+                assertTrue(basico.buscar(c.obtenerTitulo(), Token.anadirToken()).get(0).equals(c));
+            } catch (Exception ex) {
+                Logger.getLogger(MockServidoresTest.class.getName()).log(Level.SEVERE, null, ex);
+            }
 		
 	}
 	
@@ -69,7 +79,11 @@ public class MockServidoresTest {
 		PowerMockito.mockStatic(Token.class);
 	    PowerMockito.when(Token.tokenEspecial()).thenReturn("TokenEspecial");
 	    PowerMockito.when(Token.esEspecial("TokenEspecial")).thenReturn(true);
-	    PowerMockito.when(Token.anadirToken()).thenReturn("TokenValido");
+            try {
+                PowerMockito.when(Token.anadirToken()).thenReturn("TokenValido");
+            } catch (Exception ex) {
+                Logger.getLogger(MockServidoresTest.class.getName()).log(Level.SEVERE, null, ex);
+            }
 	        
 		basico.agregar(c, " " );
 	}
@@ -86,7 +100,11 @@ public class MockServidoresTest {
 		PowerMockito.mockStatic(Token.class);
 	    PowerMockito.when(Token.tokenEspecial()).thenReturn("TokenEspecial");
 	    PowerMockito.when(Token.esEspecial("TokenEspecial")).thenReturn(true);
-	    PowerMockito.when(Token.anadirToken()).thenReturn("TokenValido");
+            try {
+                PowerMockito.when(Token.anadirToken()).thenReturn("TokenValido");
+            } catch (Exception ex) {
+                Logger.getLogger(MockServidoresTest.class.getName()).log(Level.SEVERE, null, ex);
+            }
 	    
 		basico.agregar(c, Token.tokenEspecial());
 		basico.agregar(c, Token.tokenEspecial());
@@ -102,7 +120,11 @@ public class MockServidoresTest {
         PowerMockito.mockStatic(Token.class);
         PowerMockito.when(Token.tokenEspecial()).thenReturn("TokenEspecial");
         PowerMockito.when(Token.esEspecial("TokenEspecial")).thenReturn(true);
-        PowerMockito.when(Token.anadirToken()).thenReturn("TokenValido");
+            try {
+                PowerMockito.when(Token.anadirToken()).thenReturn("TokenValido");
+            } catch (Exception ex) {
+                Logger.getLogger(MockServidoresTest.class.getName()).log(Level.SEVERE, null, ex);
+            }
 		when(c.obtenerTitulo()).thenReturn("Cancion");
 		when(c.obtenerDuracion()).thenReturn(10);
 		List<Contenido> lista = new ArrayList<Contenido>();		
@@ -110,11 +132,19 @@ public class MockServidoresTest {
 		when(c.buscar(c.obtenerTitulo())).thenReturn(lista);
 		
 		basico.agregar(c, Token.tokenEspecial() );
-		assertTrue(basico.buscar(c.obtenerTitulo(), Token.anadirToken()).get(0).equals(c));
+            try {
+                assertTrue(basico.buscar(c.obtenerTitulo(), Token.anadirToken()).get(0).equals(c));
+            } catch (Exception ex) {
+                Logger.getLogger(MockServidoresTest.class.getName()).log(Level.SEVERE, null, ex);
+            }
 		
 		basico.eliminar(c, Token.tokenEspecial() );
 
-		assertTrue(basico.buscar(c.obtenerTitulo(), Token.anadirToken()).isEmpty());
+            try {
+                assertTrue(basico.buscar(c.obtenerTitulo(), Token.anadirToken()).isEmpty());
+            } catch (Exception ex) {
+                Logger.getLogger(MockServidoresTest.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
 	}
 	
@@ -139,24 +169,28 @@ public class MockServidoresTest {
 	// al servidor de respaldo
 	@Test
 	public void buscarConRespaldoContenidoDirectoTest() throws TokenNotFoundException, ContenidoDuplicadoException {
-		Servidor servidor = new ServidorConRespaldo("nombreServidor", null, null, null);
-		Cancion c = mock(Cancion.class);
-
-        PowerMockito.mockStatic(Token.class);
-        PowerMockito.when(Token.tokenEspecial()).thenReturn("TokenEspecial");
-        PowerMockito.when(Token.esEspecial("TokenEspecial")).thenReturn(true);
-        PowerMockito.when(Token.anadirToken()).thenReturn("TokenValido");
-		when(c.obtenerTitulo()).thenReturn("Cancion");
-		when(c.obtenerDuracion()).thenReturn(10);
-		List<Contenido> lista = new ArrayList<Contenido>();		
-		lista.add(c);
-		when(c.buscar(c.obtenerTitulo())).thenReturn(lista);
-
-		
-		servidor.agregar(c, Token.tokenEspecial());
-		List<Contenido> listaObtenida = servidor.buscar(c.obtenerTitulo(), Token.anadirToken());
-		assertTrue(listaObtenida.get(0).equals(c));
-		assertEquals(1, listaObtenida.size());
+            try {
+                Servidor servidor = new ServidorConRespaldo("nombreServidor", null, null, null);
+                Cancion c = mock(Cancion.class);
+                
+                PowerMockito.mockStatic(Token.class);
+                PowerMockito.when(Token.tokenEspecial()).thenReturn("TokenEspecial");
+                PowerMockito.when(Token.esEspecial("TokenEspecial")).thenReturn(true);
+                PowerMockito.when(Token.anadirToken()).thenReturn("TokenValido");
+                when(c.obtenerTitulo()).thenReturn("Cancion");
+                when(c.obtenerDuracion()).thenReturn(10);
+                List<Contenido> lista = new ArrayList<Contenido>();
+                lista.add(c);
+                when(c.buscar(c.obtenerTitulo())).thenReturn(lista);
+                
+                
+                servidor.agregar(c, Token.tokenEspecial());
+                List<Contenido> listaObtenida = servidor.buscar(c.obtenerTitulo(), Token.anadirToken());
+                assertTrue(listaObtenida.get(0).equals(c));
+                assertEquals(1, listaObtenida.size());
+            } catch (Exception ex) {
+                Logger.getLogger(MockServidoresTest.class.getName()).log(Level.SEVERE, null, ex);
+            }
 	
 	}
 
@@ -164,40 +198,44 @@ public class MockServidoresTest {
 	// Prueba la busqueda en un servidor básico
 	@Test
 	public void buscarBasicoTest() throws TokenNotFoundException, ContenidoDuplicadoException {
-		Cancion c = mock(Cancion.class);
-		Emisora e = mock(Emisora.class);
-		Anuncio a = mock(Anuncio.class);
-
-        PowerMockito.mockStatic(Token.class);
-        PowerMockito.when(Token.tokenEspecial()).thenReturn("TokenEspecial");
-        PowerMockito.when(Token.esEspecial("TokenEspecial")).thenReturn(true);
-        PowerMockito.when(Token.anadirToken()).thenReturn("TokenValido");
-        
-		when(c.obtenerTitulo()).thenReturn("Cancion");
-		when(c.obtenerDuracion()).thenReturn(10);
-		List<Contenido> lista = new ArrayList<Contenido>();		
-		lista.add(c);
-		when(c.buscar(c.obtenerTitulo())).thenReturn(lista);
-		
-		when(e.obtenerTitulo()).thenReturn("Emisora");
-		when(e.obtenerDuracion()).thenReturn(10);
-		List<Contenido> listaEmisora = new ArrayList<Contenido>();		
-		listaEmisora.add(e);
-		when(e.buscar(e.obtenerTitulo())).thenReturn(lista);
-		
-		
-		List<Contenido> anuncios = new ArrayList<Contenido>();
-		anuncios.add(a);
-		Servidor servidor = new ServidorConRespaldo("nombreServidor", null, anuncios, null);
-
-		servidor.agregar(c, Token.tokenEspecial());
-		servidor.agregar(e, Token.tokenEspecial());
-
-		
-		List<Contenido> listaObtenida = servidor.buscar(c.obtenerTitulo(), Token.anadirToken());
-		assertTrue(listaObtenida.get(0).equals(c));
-
-		assertEquals(1, listaObtenida.size());
+            try {
+                Cancion c = mock(Cancion.class);
+                Emisora e = mock(Emisora.class);
+                Anuncio a = mock(Anuncio.class);
+                
+                PowerMockito.mockStatic(Token.class);
+                PowerMockito.when(Token.tokenEspecial()).thenReturn("TokenEspecial");
+                PowerMockito.when(Token.esEspecial("TokenEspecial")).thenReturn(true);
+                PowerMockito.when(Token.anadirToken()).thenReturn("TokenValido");
+                
+                when(c.obtenerTitulo()).thenReturn("Cancion");
+                when(c.obtenerDuracion()).thenReturn(10);
+                List<Contenido> lista = new ArrayList<Contenido>();
+                lista.add(c);
+                when(c.buscar(c.obtenerTitulo())).thenReturn(lista);
+                
+                when(e.obtenerTitulo()).thenReturn("Emisora");
+                when(e.obtenerDuracion()).thenReturn(10);
+                List<Contenido> listaEmisora = new ArrayList<Contenido>();
+                listaEmisora.add(e);
+                when(e.buscar(e.obtenerTitulo())).thenReturn(lista);
+                
+                
+                List<Contenido> anuncios = new ArrayList<Contenido>();
+                anuncios.add(a);
+                Servidor servidor = new ServidorConRespaldo("nombreServidor", null, anuncios, null);
+                
+                servidor.agregar(c, Token.tokenEspecial());
+                servidor.agregar(e, Token.tokenEspecial());
+                
+                
+                List<Contenido> listaObtenida = servidor.buscar(c.obtenerTitulo(), Token.anadirToken());
+                assertTrue(listaObtenida.get(0).equals(c));
+                
+                assertEquals(1, listaObtenida.size());
+            } catch (Exception ex) {
+                Logger.getLogger(MockServidoresTest.class.getName()).log(Level.SEVERE, null, ex);
+            }
 		
 
 	}
@@ -206,41 +244,45 @@ public class MockServidoresTest {
 	// Prueba la busqueda en un servidor con respaldo
 	@Test
 	public void buscarConRespaldoTest() throws TokenNotFoundException, ContenidoDuplicadoException {
-		Cancion c = mock(Cancion.class);
-		Emisora e = mock(Emisora.class);
-		Anuncio a = mock(Anuncio.class);
-
-        PowerMockito.mockStatic(Token.class);
-        PowerMockito.when(Token.tokenEspecial()).thenReturn("TokenEspecial");
-        PowerMockito.when(Token.esEspecial("TokenEspecial")).thenReturn(true);
-        PowerMockito.when(Token.anadirToken()).thenReturn("TokenValido");
-        
-		when(c.obtenerTitulo()).thenReturn("Cancion");
-		when(c.obtenerDuracion()).thenReturn(10);
-		List<Contenido> lista = new ArrayList<Contenido>();		
-		lista.add(c);
-		when(c.buscar(c.obtenerTitulo())).thenReturn(lista);
-		
-		when(e.obtenerTitulo()).thenReturn("Emisora");
-		when(e.obtenerDuracion()).thenReturn(10);
-		List<Contenido> listaEmisora = new ArrayList<Contenido>();		
-		listaEmisora.add(e);
-		when(e.buscar(e.obtenerTitulo())).thenReturn(lista);
-		
-		
-		List<Contenido> anuncios = new ArrayList<Contenido>();
-		anuncios.add(a);
-		Servidor basico = new ServidorBasico("nombreServidorBasico", null, anuncios);
-
-		basico.agregar(c, Token.tokenEspecial());
-		basico.agregar(e, Token.tokenEspecial());
-
-		Servidor respaldo = new ServidorConRespaldo("nombreServidorRespaldo", null, anuncios, basico);
-
-		List<Contenido> listaObtenida = respaldo.buscar(c.obtenerTitulo(), Token.anadirToken());
-		assertTrue(listaObtenida.get(0).equals(c));
-
-		assertEquals(1, listaObtenida.size());
+            try {
+                Cancion c = mock(Cancion.class);
+                Emisora e = mock(Emisora.class);
+                Anuncio a = mock(Anuncio.class);
+                
+                PowerMockito.mockStatic(Token.class);
+                PowerMockito.when(Token.tokenEspecial()).thenReturn("TokenEspecial");
+                PowerMockito.when(Token.esEspecial("TokenEspecial")).thenReturn(true);
+                PowerMockito.when(Token.anadirToken()).thenReturn("TokenValido");
+                
+                when(c.obtenerTitulo()).thenReturn("Cancion");
+                when(c.obtenerDuracion()).thenReturn(10);
+                List<Contenido> lista = new ArrayList<Contenido>();
+                lista.add(c);
+                when(c.buscar(c.obtenerTitulo())).thenReturn(lista);
+                
+                when(e.obtenerTitulo()).thenReturn("Emisora");
+                when(e.obtenerDuracion()).thenReturn(10);
+                List<Contenido> listaEmisora = new ArrayList<Contenido>();
+                listaEmisora.add(e);
+                when(e.buscar(e.obtenerTitulo())).thenReturn(lista);
+                
+                
+                List<Contenido> anuncios = new ArrayList<Contenido>();
+                anuncios.add(a);
+                Servidor basico = new ServidorBasico("nombreServidorBasico", null, anuncios);
+                
+                basico.agregar(c, Token.tokenEspecial());
+                basico.agregar(e, Token.tokenEspecial());
+                
+                Servidor respaldo = new ServidorConRespaldo("nombreServidorRespaldo", null, anuncios, basico);
+                
+                List<Contenido> listaObtenida = respaldo.buscar(c.obtenerTitulo(), Token.anadirToken());
+                assertTrue(listaObtenida.get(0).equals(c));
+                
+                assertEquals(1, listaObtenida.size());
+            } catch (Exception ex) {
+                Logger.getLogger(MockServidoresTest.class.getName()).log(Level.SEVERE, null, ex);
+            }
 	}
 
 
