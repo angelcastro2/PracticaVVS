@@ -135,7 +135,7 @@ public class GraphWalkerTest extends ExecutionContext implements grafica {
     public void runFunctionalTest() {
 		AlternativeCondition condition = new AlternativeCondition();
 		condition.addStopCondition(new EdgeCoverage(100));
-		condition.addStopCondition(new TimeDuration(15, TimeUnit.SECONDS));
+		condition.addStopCondition(new TimeDuration(5, TimeUnit.SECONDS));
 		new TestBuilder()
             .addModel(GRAFICA_PATH,new RandomPath(condition))
             .execute();
@@ -144,7 +144,7 @@ public class GraphWalkerTest extends ExecutionContext implements grafica {
 	@Test
     public void runStabilityTest() {
         new TestBuilder()
-            .addModel(GRAFICA_PATH,new RandomPath(new TimeDuration(15, TimeUnit.SECONDS)))
+            .addModel(GRAFICA_PATH,new RandomPath(new TimeDuration(5, TimeUnit.SECONDS)))
             .execute();
     }
     
