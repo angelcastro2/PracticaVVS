@@ -1,5 +1,6 @@
 package Servidor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Contenido.Contenido;
@@ -14,8 +15,14 @@ public abstract class ServidorGenerico implements Servidor {
 	public ServidorGenerico(String nombre, List<Contenido> contenidos, List<Contenido> anuncios) {
 		super();
 		this.nombre = nombre;
-		this.contenidos = contenidos;
-		this.anuncios = anuncios;
+		if (contenidos == null)
+				this.contenidos = new ArrayList<Contenido> ();
+		else
+			this.contenidos = contenidos;
+		if (anuncios == null)
+			this.anuncios = new ArrayList<Contenido> ();
+		else
+			this.anuncios = anuncios;
 		this.indiceAnuncio = 0;
 	}
 
@@ -25,7 +32,7 @@ public abstract class ServidorGenerico implements Servidor {
 	}
 
 	// Crea un token con 10 usos
-	public String alta() {
+	public String alta() throws Exception {
 		return Token.anadirToken();
 	}
 
